@@ -1,0 +1,315 @@
+/*pseudo selector se inician con 2 puntos. Significa que no existen como tal en el código de html*/
+/*root es una forma de almacenar variables de css que se les conoce como custom properties*/
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    /*--primario: #FFC107;*/
+    /*--primario: rgba(255,193,7,1);*/
+    --primario: rgb(255, 193, 7);
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+
+    --fuente-principal: 3.8rem;
+}
+
+/*Globales*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /*Hack para box model*/
+}
+
+/*el * selecciona todos los elementos*/
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.contenedor {
+    max-width: 120rem;
+    /*    margin-top: 0;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;*/
+    margin: 0 auto; /*margin: 0 auto 0 auto; margin: arriba_y_abajo derecha_izquierda*/
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+    }
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    /*-webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);*/
+    /*-moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);*/
+    box-shadow: 0 5px 15px 0 rgba(112, 112, 112, 0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*Pseudo elementos de css*/
+/*.titulo:before {
+    content: 'Esto va después del título';
+}*/
+
+body {
+    font-size: 16px; /*1 rem = 10px*/
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+    /* 1 rem = 10px (Sirven mejor para un televisor, smartwatch, tablet o pantalla con densidad de px muy alta)*/
+}
+
+/*Tipografia*/
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+/*.titulo {
+    !*llave: valor*!
+    text-align: center;
+}*/
+
+/*Selector*/
+/*Titulos*/
+.titulo span {
+    font-size: 2rem;
+    color: blue;
+}
+
+/*Especifidad*/
+/*h1.titulo span {
+    font-size: 2rem;
+    color: red;
+}*/
+
+/*span {
+    color: green!important;
+}*/
+
+/* Utilidades */
+.w-sm-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/*Navegacion principal*/
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+/*Media Queries*/
+
+/*snippets -> mq*/
+/* Se aplica cuando sea mas de 768 px*/
+/*mq estandar:*/
+/*- 480px -> Telefono*/
+/*- 768px -> Tablet*/
+/*- 1140px -> Laptop o PC*/
+/*- 1400px -> TV*/
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.navegacion-principal a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1rem; /*padding: 1rem 1rem 1rem 1rem;*/
+    /*display: block;*/
+}
+
+/*pseudo-clase*/
+.navegacion-principal a:hover {
+    color: var(--oscuro);
+    background-color: var(--primario);
+}
+
+/*hero*/
+.hero {
+    background-image: url("../img/hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    /*padding: 20px;*/
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    /*background-color: rgba(0, 0, 0, 0.7); !*Anterior*!*/
+    background-color: rgb(0 0 0 / 70%);
+    width: 100%;
+    height: 100%;
+
+    /*Alinear vertical y horizontal:*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /*Otra forma para colocar el background en toda la clase:*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*left: 0;*/
+}
+
+.contenido-hero h2, .contenido-hero p {
+    color: var(--blanco);
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+/*servicios*/
+.servicios {
+    display: grid;
+    /*grid-template-columns: 300px 300px;
+    grid-template-rows: 200px 800px;*/
+
+    /*Esto es lo mismo de arriba que esta en comentarios*/
+    /*grid: rows arriba rows abajo / columns izquierda columns derecha*/
+    /*grid: 200px 800px / 300px 300px;*/
+
+    /*grid-template-columns: 33.3% 33.3% 33.3%;*/
+    /*grid-template-columns: 1fr 1fr 1fr; !*fr son fracciones*!*/
+    grid-template-columns: repeat(3, 1fr); /*fr son fracciones*/
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*Contacto*/
+.formulario {
+    background-color: var(--gris);
+    /*Coge 60 pixeles y lo compara con la cantidad de pixeles
+    del 100% y coge el valor minimo, por ejemplo si pongo 60 pixeles
+    y el 100% es de 1100 pixeles va a coger el valor de 60rem.
+    Otro ejemplo: Si el 100% es de 400 px entonces va a coger el 100%*/
+    width: min(60rem, 100%); /*Utilizar el valor mas pequeño*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+.contenedor -campos {
+
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+/*
+.campo input[type="text"], .campo input[type="tel"] {
+    background-color: red;
+}*/
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem; /*15 pixeles*/
+    border-radius: .5rem;
+}
